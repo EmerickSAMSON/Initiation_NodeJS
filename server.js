@@ -105,6 +105,55 @@ fastify.patch('/heroes/:id', async(request,reply) => {
     return result
 })
 
+// Je souhaite:
+// Une route qui me permette de créer un nouvel utilisateur (user) dans une collection users
+// 		- email
+// 		- password
+// 		- role (user/admin)
+// Une route qui me permette de récupérer tout les utilisateurs
+// Une route qui me permette de récupérer un utilisateur par son id
+// Une route qui me permette de mettre à jour un utilisateur par son id
+
+
+
+fastify.post('/user', async (request,reply) => {
+    const collection = fastify.mongo.db.collection('user')
+    const result = await collection.insertOne(request.body)
+    return result.ops
+})
+
+fastify.get('/user', async (request,reply) => {
+    const collection = fastify.mongo.db.collection('user')
+    const result = await collection.find({}).toArray()
+    return result
+})
+
+fastify.get('/user/:id', async (request,reply) => {
+    const collection = fastify.mongo.db.collection('user')
+    const {id} = request.params
+    const result = await collection.findOne({
+        _id: new ObjectId(id)
+    })
+    return result
+})
+
+fastify.patch('/user/:id', async (request, reply) => {
+    const collection = fastify.mongo.db.collection('user')
+    const {id} = request.params
+    const result = await collection.findOneAndUpdate({
+        _id: new ObjectId(id)}, 
+        {$set: request.body},
+        {returnDocument: 'after'})
+
+    return result
+})
+
+
+
+
+
+
+
 // Run the server!
 const start = async () => {
     try {

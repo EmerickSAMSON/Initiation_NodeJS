@@ -51,3 +51,38 @@ Content-Type: application/json
 {
 	"biography.full-name": "Bruce Wayne"
 }
+
+
+
+###
+
+POST http://localhost:3000/user
+Content-Type: application/json
+
+{
+	"mail": "abc@def.com",
+	"password": "jeveuxdespates",
+	"role": "admin"
+}
+
+
+###
+GET http://localhost:3000/user
+
+
+
+###
+GET http://localhost:3000/user/60e5ae25ac296203f42ddda8
+
+
+
+###
+PATCH  http://localhost:3000/user/60e5ae25ac296203f42ddda8
+Content-Type: application/json
+
+
+{
+    "mail": "kjhg@defpoijhg.com",
+    "password": "jeveuxduquinoa",
+    "role": "user"
+}
