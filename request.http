@@ -32,12 +32,22 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/heroes/60e4593dbd17683dbc1c533e
+GET http://localhost:3000/heroes/60e58bad179b573c8ccf1de3
 
 ###
 
-GET http://localhost:3000/heroes/bio/60e4593dbd17683dbc1c533e
+GET http://localhost:3000/heroes/bio/60e58bad179b573c8ccf1de3
 
 ###
 
-DELETE http://localhost:3000/heroes/60e4593dbd17683dbc1c533e
+DELETE http://localhost:3000/heroes/60e58bad179b573c8ccf1de3
+
+
+###
+
+PATCH   http://localhost:3000/heroes/60e58bad179b573c8ccf1de3
+Content-Type: application/json
+
+{
+	"biography.full-name": "Bruce Wayne"
+}
